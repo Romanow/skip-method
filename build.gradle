@@ -1,0 +1,49 @@
+plugins {
+    id "java"
+    id "idea"
+}
+
+ext {
+    junitVersion = "5.7.0"
+    mockitoVersion = "3.5.11"
+    assertjVersion = "3.19.0"
+    aspectjVersion = "1.9.6"
+    lombokVersion = "1.18.16"
+}
+
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    aspectjWeaverAgent
+}
+
+dependencies {
+    aspectjWeaverAgent "org.aspectj:aspectjweaver:$aspectjVersion"
+    testImplementation "org.aspectj:aspectjrt:$aspectjVersion"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+    testImplementation "org.assertj:assertj-core:$assertjVersion"
+
+    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+}
+
+test {
+    useJUnitPlatform()
+    doFirst {
+        jvmArgs "-javaagent:${configurations.aspectjWeaverAgent.singleFile}"
+    }
+}
