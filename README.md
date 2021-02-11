@@ -21,6 +21,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperty "skipOn", findProperty("skipOn")
+    
     doFirst {
         jvmArgs "-javaagent:${configurations.aspectjWeaverAgent.singleFile}"
     }
