@@ -5,6 +5,7 @@ import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.annotation.Pointcut
 import org.aspectj.lang.reflect.MethodSignature
+import kotlin.reflect.full.createInstance
 
 @Aspect
 class SkipMethodAspect {
@@ -19,7 +20,7 @@ class SkipMethodAspect {
     }
 
     @Around("anyMethod() && withStepAnnotation()")
-    fun methodAround(joinPoint: ProceedingJoinPoint): DummyObject {
+    fun methodAround(joinPoint: ProceedingJoinPoint): Any? {
         var environment: SkipMethod.Environments? = null
         if (!skipOn.isNullOrEmpty()) {
             environment = SkipMethod.Environments.valueOf(skipOn)
@@ -27,10 +28,12 @@ class SkipMethodAspect {
 
         val methodSignature = joinPoint.signature as MethodSignature
         val skipMethod = methodSignature.method.getAnnotation(SkipMethod::class.java)
+        val objectProvider = skipMethod.valueProvider.createInstance()
+
         return if (environment in skipMethod.skipOn) {
-            buildDefault()
+            objectProvider.generate()
         } else {
-            joinPoint.proceed() as DummyObject
+            joinPoint.proceed()
         }
     }
 }

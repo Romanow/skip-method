@@ -1,9 +1,9 @@
 # Пропуск вызова метода в тестах
 
-## Проблематика
+## Задача
 
-Сделать исключение вызова конкретных методов и заменить их значением по-умолчанию.
-Используется для исключения шагов при запуске тестов на разных окружениях.
+Сделать исключение вызова конкретных методов (в коде) и заменить их значением по-умолчанию.
+Используется для исключения вызова методов при запуске тестов на разных окружениях.
 
 ## Конфигурация
 
@@ -22,11 +22,34 @@ dependencies {
 test {
     useJUnitPlatform()
     systemProperty "skipOn", findProperty("skipOn")
-    
+
     doFirst {
-        jvmArgs "-javaagent:${configurations.aspectjWeaverAgent.singleFile}"
+        jvmArgs "--add-opens",
+                "java.base/java.lang=ALL-UNNAMED",
+                "-javaagent:${configurations.aspectjWeaverAgent.singleFile}"
     }
 }
 ```
 
-В [META-INF/aop.xml](src/test/resources/META-INF/aop.xml) создать описание используемых аспектов.
+В [META-INF/aop.xml](src/main/resources/META-INF/aop.xml) создать описание используемых аспектов.
+
+## Использование
+
+```kotlin
+@SkipMethod(skipOn = [DEV, PROD], valueProvider = IntegerProvider::class)
+fun skipOnAll(): Int {
+    return 100
+}
+
+class IntegerProvider : ObjectProvider<Int> {
+    override fun generate(): Int {
+        return 10
+    }
+}
+```
+
+## Запуск
+
+```shell
+$ ./gradlew clean build -PskipOn=DEV
+```
