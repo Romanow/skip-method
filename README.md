@@ -1,5 +1,7 @@
 # Пропуск вызова метода в тестах
 
+[![Build project](https://github.com/Romanow/skip-method/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/Romanow/skip-method/actions/workflows/main.yml)
+
 ## Задача
 
 Сделать исключение вызова конкретных методов (в коде) и заменить их значением по-умолчанию.
