@@ -1,4 +1,4 @@
-package ru.romanow.skip
+package ru.romanow.skip.method
 
 import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
@@ -11,7 +11,7 @@ import kotlin.reflect.full.createInstance
 class SkipMethodAspect {
     private val skipOn = System.getProperty("skipOn")
 
-    @Pointcut("@annotation(ru.romanow.skip.SkipMethod)")
+    @Pointcut("@annotation(ru.romanow.skip.method.SkipMethod)")
     fun withStepAnnotation() {
     }
 

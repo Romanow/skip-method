@@ -1,5 +1,5 @@
 <aspectj>
     <aspects>
-        <aspect name="ru.romanow.skip.SkipMethodAspect"/>
+        <aspect name="ru.romanow.skip.method.SkipMethodAspect"/>
     </aspects>
 </aspectj>

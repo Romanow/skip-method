@@ -1,4 +1,4 @@
-package ru.romanow.skip
+package ru.romanow.skip.method
 
 import kotlin.reflect.KClass
 

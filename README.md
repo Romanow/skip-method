@@ -1,6 +1,6 @@
-# Пропуск вызова метода в тестах
+[![Build project](https://github.com/Romanow/skip-method/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Romanow/skip-method/actions/workflows/build.yml)
 
-[![Build project](https://github.com/Romanow/skip-method/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/Romanow/skip-method/actions/workflows/main.yml)
+# Пропуск вызова метода в тестах
 
 ## Задача
 
