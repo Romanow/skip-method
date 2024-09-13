@@ -9,6 +9,25 @@
 Сделать исключение вызова конкретных методов (в коде) и заменить их значением по-умолчанию.
 Используется для исключения вызова методов при запуске тестов на разных окружениях.
 
+## Подключение
+
+### Maven
+
+```xml
+<dependency>
+  <groupId>ru.romanow.skip.method</groupId>
+  <artifactId>skip-method</artifactId>
+  <version>${skip-method.version}</version>
+</dependency>
+```
+
+### Gradle
+
+```groovy
+testImplementation "ru.romanow.skip.method:skip-method:$skipMethodVersion"
+```
+
+
 ## Конфигурация
 
 Настроить поддержку AspectJ в [gradle](build.gradle):

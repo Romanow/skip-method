@@ -9,7 +9,9 @@ annotation class SkipMethod(
     val skipOn: Array<Environments> = []
 ) {
     enum class Environments {
-        DEV, STAGE, PROD
+        DEV,
+        STAGE,
+        PROD
     }
 }
 
