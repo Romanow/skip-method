@@ -10,10 +10,10 @@ plugins {
 
 ext {
     junitVersion = "5.11.0"
-    mockitoVersion = "3.5.11"
-    assertjVersion = "3.19.0"
-    aspectjVersion = "1.9.20"
-    lombokVersion = "1.18.16"
+    mockitoVersion = "5.13.0"
+    assertjVersion = "3.26.3"
+    aspectjVersion = "1.9.22.1"
+    lombokVersion = "1.18.34"
 }
 
 idea {
