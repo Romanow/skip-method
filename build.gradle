@@ -9,7 +9,7 @@ plugins {
 [compileKotlin, compileTestKotlin]*.kotlinOptions*.jvmTarget = "17"
 
 ext {
-    junitVersion = "5.11.0"
+    junitVersion = "5.11.1"
     mockitoVersion = "5.13.0"
     assertjVersion = "3.26.3"
     aspectjVersion = "1.9.22.1"
