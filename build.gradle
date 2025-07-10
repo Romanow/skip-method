@@ -13,7 +13,7 @@ ext {
     junitVersion = "5.11.0"
     mockitoVersion = "5.13.0"
     assertjVersion = "3.26.3"
-    aspectjVersion = "1.9.22.1"
+    aspectjVersion = "1.9.24"
     lombokVersion = "1.18.34"
 }
 
