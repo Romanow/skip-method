@@ -12,7 +12,7 @@ plugins {
 ext {
     junitVersion = "5.11.0"
     mockitoVersion = "5.13.0"
-    assertjVersion = "3.26.3"
+    assertjVersion = "3.27.4"
     aspectjVersion = "1.9.22.1"
     lombokVersion = "1.18.34"
 }
